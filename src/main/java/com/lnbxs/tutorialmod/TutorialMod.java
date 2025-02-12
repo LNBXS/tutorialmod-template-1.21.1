@@ -1,5 +1,6 @@
 package com.lnbxs.tutorialmod;
 
+import com.lnbxs.tutorialmod.items.ModItemGroups;
 import com.lnbxs.tutorialmod.items.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -23,5 +24,6 @@ public class TutorialMod implements ModInitializer {
 		LOGGER.info("Hello Fabric world!");
 
 		ModItems.registerModItems();
+		ModItemGroups.registerModItemGroups();
 	}
 }
