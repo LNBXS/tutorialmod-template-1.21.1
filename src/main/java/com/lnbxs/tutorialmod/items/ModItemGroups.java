@@ -2,6 +2,7 @@ package com.lnbxs.tutorialmod.items;
 
 import com.lnbxs.tutorialmod.TutorialMod;
 
+import com.lnbxs.tutorialmod.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -40,6 +41,11 @@ public class ModItemGroups {
                     entries.add(ModItems.ICE_ETHER);
                     entries.add(Items.DIAMOND);
                     entries.add(Items.OAK_WOOD);
+                    entries.add(ModBlocks.ICE_ETHER_BLOCK);
+                    entries.add(ModBlocks.ICE_ETHER_ORE);
+                    entries.add(ModBlocks.RAW_ICE_ETHER_BLOCK);
+
+
                 })
                 .build()
         );
