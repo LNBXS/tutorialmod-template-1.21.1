@@ -11,10 +11,7 @@ import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.CampfireCookingRecipe;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
@@ -22,11 +19,11 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static com.lnbxs.tutorialmod.items.ModItems.RAW_ICE_ETHER;
+import static com.lnbxs.tutorialmod.items.ModItems.ICE_ETHER_ORE;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
-    private static final List<ItemConvertible> ICE_ETHER = List.of(RAW_ICE_ETHER, Items.ICE);
+    private static final List<ItemConvertible> ICE_ETHER = List.of(ICE_ETHER_ORE, Items.ICE);
 
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
@@ -47,8 +44,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         * 第五个是合成的方块（或物品）
          */
 //熔炉/高炉配方
-        offerSmelting(exporter, ICE_ETHER, RecipeCategory.MISC, ModItems.ICE_ETHER, 0.7f, 200,"ice ether");//熔炉
-        offerBlasting(exporter, ICE_ETHER, RecipeCategory.MISC, ModItems.ICE_ETHER, 0.7f, 100,"ice ether");//高炉
+        offerSmelting(exporter, ICE_ETHER, RecipeCategory.MISC, ModItems.ICE_ETHER, 0.7f, 200,"ice_ether");//熔炉
+        offerBlasting(exporter, ICE_ETHER, RecipeCategory.MISC, ModItems.ICE_ETHER, 0.7f, 100,"ice_ether");//高炉
         /*这里它们两个的参数本质上是一样的，
         * 第一个和上面的合成配方一样
         * 第二个参数是我们的List，
@@ -62,8 +59,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         //但使用这个方法需要提供一个List作为输入，
         //所以就需要在下面定义一个List(就是下面那串被注释掉的)
         //如果你觉得太复杂了，可以直接使用offerFoodCookingRecipe方法，如下
-        offerFoodCookingRecipe(exporter, "ice ether", RecipeSerializer.CAMPFIRE_COOKING,CampfireCookingRecipe::new,
-                600, ModItems.RAW_ICE_ETHER, ModItems.ICE_ETHER, 0.35f);
+
+//        offerFoodCookingRecipe(exporter, "ice_ether", RecipeSerializer.CAMPFIRE_COOKING,CampfireCookingRecipe::new,
+//                600, ModItems.RAW_ICE_ETHER, ModItems.ICE_ETHER, 0.35f);
+
         /*与上面的方法相比，这个方法可以直接指定食物名称，不需要提供List作为输入，而且只是将其中的形参换成了具体的实参而已
         *但是，如果你有大量的配方需要添加，我的建议还是提炼个方法出来
         *不然每次都要写一大堆，不仅麻烦，而且容易出错*/
@@ -73,7 +72,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.SUGAR,3)
                 .pattern("###")
                 .input('#', Ingredient.ofItems(Items.BEETROOT))
-                .criterion("has item", RecipeProvider.conditionsFromItem(Items.BEETROOT))
+                .criterion("has_item", RecipeProvider.conditionsFromItem(Items.BEETROOT))
                 .offerTo(exporter, Identifier.of(TutorialMod.MOD_ID, "beetroot_to_sugar"));
         /*这里使用ShapedRecipeJsonBuilder来创建有序合成配方，
         * pattern是合成表格，这里只有一行，完整的九宫格，是像下面这样的：
@@ -91,8 +90,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS,ModBlocks.ICE_ETHER_ORE)
                 .input(ModItems.RAW_ICE_ETHER)
                 .input(Items.STONE)
-                .criterion("has item", RecipeProvider.conditionsFromItem(ModItems.RAW_ICE_ETHER))
-                .criterion("has item", RecipeProvider.conditionsFromItem(Items.STONE))
+                .criterion("has_item", RecipeProvider.conditionsFromItem(ModItems.RAW_ICE_ETHER))
+                .criterion("has_item", RecipeProvider.conditionsFromItem(Items.STONE))
                 .offerTo(exporter, Identifier.of(TutorialMod.MOD_ID, "ice_ether_ore"));
         /*这里使用ShapelessRecipeJsonBuilder来创建无序合成配方
         * input和上面一样，一样不能超过9个

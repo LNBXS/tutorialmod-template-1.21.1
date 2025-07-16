@@ -1,7 +1,6 @@
 package com.lnbxs.tutorialmod.datagen;
 
 import com.lnbxs.tutorialmod.block.ModBlocks;
-import com.lnbxs.tutorialmod.items.ModItemGroups;
 import com.lnbxs.tutorialmod.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;

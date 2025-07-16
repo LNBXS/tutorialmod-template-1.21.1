@@ -32,7 +32,7 @@ public class ModBlockLootTagsProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.RAW_ICE_ETHER_BLOCK);
         //addDrop(ModBlocks.ICE_ETHER_ORE,oreDrops(ModBlocks.ICE_ETHER_ORE, ModItems.RAW_ICE_ETHER));
         //上面这行代码是一般矿石的掉落，只会掉落一个矿石，下面这行代码是会掉多个掉落物的矿石的掉落，这里用下面这个方法。
-        addDrop(ModBlocks.ICE_ETHER_ORE, copperOreDrops(ModBlocks.ICE_ETHER_ORE, ModItems.RAW_ICE_ETHER));
+        addDrop(ModBlocks.ICE_ETHER_ORE, copperOreDrops(ModBlocks.ICE_ETHER_ORE, ModItems.ICE_ETHER));
         //但如果使用这个方法，你就需要写一个copperOreDrops方法，如下：
     }
 
