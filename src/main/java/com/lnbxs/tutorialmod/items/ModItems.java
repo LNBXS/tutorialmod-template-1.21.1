@@ -14,9 +14,13 @@ public class ModItems {
         return Registry.register(Registries.ITEM,Identifier.of(TutorialMod.MOD_ID, id), item);
     }
     public static final Item ICE_ETHER = registerItem("ice_ether", new Item(new Item.Settings()));
+    public static final Item RAW_ICE_ETHER = registerItem("raw_ice_ether", new Item(new Item.Settings()));
+    public static final Item ICE_ETHER_ORE = registerItem("ice_ether_ore", new Item(new Item.Settings()));
 
     private static void addItemToIG(FabricItemGroupEntries fabricItemGroupEntries){
         fabricItemGroupEntries.add(ICE_ETHER);
+        fabricItemGroupEntries.add(RAW_ICE_ETHER);
+        fabricItemGroupEntries.add(ICE_ETHER_ORE);
     }
 
 //    private static void addItemToIG2(FabricItemGroupEntries fabricItemGroupEntries){
